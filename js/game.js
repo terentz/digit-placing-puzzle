@@ -7,8 +7,8 @@
 /* TOP LEVEL FUNCTIONS */
 
 function move ( ) {
-    var target = $(event.currentTarget);
-    var node = target.attr('id');
+    target = $(event.currentTarget);
+    node = target.attr('id');
     
     // If take back..
     if ( node === currNode ) {
@@ -18,6 +18,9 @@ function move ( ) {
         // Otherwise, move forward..
         if ( validNodes.indexOf(node) > -1 ) {
             moveForth( node );
+        } // Unless it's an adjacent node..
+        else if ( adjacent( node, currNode ) ) {
+            return;
         }
     }
 }
@@ -61,6 +64,12 @@ function moveBack ( id ) {
     // Set valid nodes..
     setValid( started ? currNode : '0' );
 }
+function clickAdjacent() {
+    target = $(event.currentTarget);
+    node = target.attr('id');
+    
+    
+}
 
 function restart () {
     $('.nodeText').text('');
@@ -74,12 +83,15 @@ function restart () {
     setValid();
 }
 
+
+/*  */
+
+
+
 /* GAME UTILITIES */
 
-
-
 function setValid ( id ) {
-    console.log('in setValid()');
+//    console.log('in setValid()');
     if ( !started ) {
         // Set valid nodes (pre-game)
         for ( node in NODES ) {
