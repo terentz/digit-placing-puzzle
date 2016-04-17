@@ -5,7 +5,6 @@
 
 
 /* TOP LEVEL FUNCTIONS */
-var test;
 
 function move ( ) {
     var target = $(event.currentTarget);
@@ -18,12 +17,11 @@ function move ( ) {
     } else {
         // Otherwise, move forward..
         if ( validNodes.indexOf(node) > -1 ) {
-            moveFwd( node );
+            moveForth( node );
         }
     }
 }
-
-function moveFwd( id ) {
+function moveForth ( id ) {
     // Set prevNode..
     if ( !started ) {
         started = true;
@@ -40,7 +38,6 @@ function moveFwd( id ) {
     // Set the nodes that are now valid..
     setValid(id);
 }
-
 function moveBack ( id ) {
     --current;
     // Blank out current square..
@@ -65,13 +62,23 @@ function moveBack ( id ) {
     setValid( started ? currNode : '0' );
 }
 
-
+function restart () {
+    $('.nodeText').text('');
+    prevNode = null;
+    currNode = null;
+    nextNode = null;
+    started = false;
+    current = 0;
+    usedNodes = null;
+    usedNodes = new Array();
+    setValid();
+}
 
 /* GAME UTILITIES */
 
 
 
-function setValid(id) {
+function setValid ( id ) {
     console.log('in setValid()');
     if ( !started ) {
         // Set valid nodes (pre-game)
@@ -96,7 +103,6 @@ function setValid(id) {
         }
     }
 }
-
-function adjacent( id1, id2 ) {
+function adjacent ( id1, id2 ) {
     return GRAPH[ NODES.indexOf(id1) ][ NODES.indexOf(id2) ];
 }
