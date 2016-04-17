@@ -2,6 +2,7 @@
 <html>
   <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="./css/board.css"/>
   </head>
   <body>
 
@@ -15,17 +16,17 @@
       <!-- CIRCLES -->
       <g id="grp_circles" fill="white">
         <!-- top circle -->
-        <circle id="nodeA" cx="150" cy="50" r="25"/>
+        <circle id="A" cx="150" cy="50" r="25"/>
         <!-- first row of circles -->
-        <circle id="nodeB" cx="50" cy="150" r="25"/>
-        <circle id="nodeC" cx="150" cy="150" r="25"/>
-        <circle id="nodeD" cx="250" cy="150" r="25"/>
+        <circle id="B" cx="50" cy="150" r="25"/>
+        <circle id="C" cx="150" cy="150" r="25"/>
+        <circle id="D" cx="250" cy="150" r="25"/>
         <!-- second row of circles -->
-        <circle id="nodeE" cx="50" cy="250" r="25"/>
-        <circle id="nodeF" cx="150" cy="250" r="25"/>
-        <circle id="nodeG" cx="250" cy="250" r="25"/>
+        <circle id="E" cx="50" cy="250" r="25"/>
+        <circle id="F" cx="150" cy="250" r="25"/>
+        <circle id="G" cx="250" cy="250" r="25"/>
         <!-- bottom circle -->
-        <circle id="nodeH" cx="150" cy="350" r="25"/>
+        <circle id="H" cx="150" cy="350" r="25"/>
       </g>
   
       <!-- LINES -->
@@ -59,14 +60,14 @@
   
       <!-- TEXT -->
       <g id="grp_text" text-anchor="middle">
-        <text x="150" y="50" dy=".3em" stroke-width="2px">A</text>
-        <text x="50" y="150" dy=".3em">B</text>
-        <text x="150" y="150" dy=".3em">C</text>
-        <text x="250" y="150" dy=".3em">D</text>
-        <text x="50" y="250" dy=".3em">E</text>
-        <text x="150" y="250" dy=".3em">F</text>
-        <text x="250" y="250" dy=".3em">G</text>
-        <text x="150" y="350" dy=".3em">H</text>
+        <text id="txt_A" x="150" y="50" dy=".3em" stroke-width="2px"></text>
+        <text id="txt_B" x="50" y="150" dy=".3em"></text>
+        <text id="txt_C" x="150" y="150" dy=".3em"></text>
+        <text id="txt_D" x="250" y="150" dy=".3em"></text>
+        <text id="txt_E" x="50" y="250" dy=".3em"></text>
+        <text id="txt_F" x="150" y="250" dy=".3em"></text>
+        <text id="txt_G" x="250" y="250" dy=".3em"></text>
+        <text id="txt_H" x="150" y="350" dy=".3em"></text>
       </g>
   
     </svg>
@@ -77,9 +78,10 @@
     <script src='./js/globals.js'></script>
     <script src='./js/game.js'></script>
     <script>
-        $('circle').bind('click', nextDigit);
-        $('circle#circA').attr('fill', 'red');
-        $('circle#circA').attr('fill', "");
+        $('circle').bind('click', move);
+        
+        /* init's */
+        setValid('0');
     </script>
   </body>
 </html>

@@ -1,0 +1,12 @@
+
+
+circle.valid {
+    background-color: lightgreen;
+}
+circle.used {
+    background-color: white;
+}
+circle.current {
+    background-color: lightyellow;
+}
+
