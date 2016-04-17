@@ -15,17 +15,17 @@
       <!-- CIRCLES -->
       <g id="grp_circles" fill="white">
         <!-- top circle -->
-        <circle id="circA" cx="150" cy="50" r="25"/>
+        <circle id="nodeA" cx="150" cy="50" r="25"/>
         <!-- first row of circles -->
-        <circle id="circB" cx="50" cy="150" r="25"/>
-        <circle id="circC" cx="150" cy="150" r="25"/>
-        <circle id="circD" cx="250" cy="150" r="25"/>
+        <circle id="nodeB" cx="50" cy="150" r="25"/>
+        <circle id="nodeC" cx="150" cy="150" r="25"/>
+        <circle id="nodeD" cx="250" cy="150" r="25"/>
         <!-- second row of circles -->
-        <circle id="circE" cx="50" cy="250" r="25"/>
-        <circle id="circF" cx="150" cy="250" r="25"/>
-        <circle id="circG" cx="250" cy="250" r="25"/>
+        <circle id="nodeE" cx="50" cy="250" r="25"/>
+        <circle id="nodeF" cx="150" cy="250" r="25"/>
+        <circle id="nodeG" cx="250" cy="250" r="25"/>
         <!-- bottom circle -->
-        <circle id="circH" cx="150" cy="350" r="25"/>
+        <circle id="nodeH" cx="150" cy="350" r="25"/>
       </g>
   
       <!-- LINES -->
@@ -59,22 +59,27 @@
   
       <!-- TEXT -->
       <g id="grp_text" text-anchor="middle">
-        <text x="150" y="50" dy=".3em" stroke-width="2px">1</text>
-        <text x="50" y="150" dy=".3em">2</text>
-        <text x="150" y="150" dy=".3em">3</text>
-        <text x="250" y="150" dy=".3em">4</text>
-        <text x="50" y="250" dy=".3em">5</text>
-        <text x="150" y="250" dy=".3em">6</text>
-        <text x="250" y="250" dy=".3em">7</text>
-        <text x="150" y="350" dy=".3em">8</text>
+        <text x="150" y="50" dy=".3em" stroke-width="2px">A</text>
+        <text x="50" y="150" dy=".3em">B</text>
+        <text x="150" y="150" dy=".3em">C</text>
+        <text x="250" y="150" dy=".3em">D</text>
+        <text x="50" y="250" dy=".3em">E</text>
+        <text x="150" y="250" dy=".3em">F</text>
+        <text x="250" y="250" dy=".3em">G</text>
+        <text x="150" y="350" dy=".3em">H</text>
       </g>
   
     </svg>
     
     <script src="./js/jquery-2.2.2.js"></script>
+<!--    <script src="./js/graph.js"></script>-->
+<!--    <script src="./js/cytoscape/cytoscape.js"></script>-->
+    <script src='./js/globals.js'></script>
+    <script src='./js/game.js'></script>
     <script>
-        $('circle#circA').attr("fill", "red");
-        $('circle#circA').attr("fill", "");
+        $('circle').bind('click', nextDigit);
+        $('circle#circA').attr('fill', 'red');
+        $('circle#circA').attr('fill', "");
     </script>
   </body>
 </html>

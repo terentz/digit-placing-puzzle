@@ -2,11 +2,6 @@
  * 
  */
 
-/* GLOBALS */
-
-var started = false;
-
-var map 
 
 
 /* TOP LEVEL FUNCTIONS */
