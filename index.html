@@ -17,15 +17,15 @@
         <!-- top circle -->
         <circle id="circA" cx="150" cy="50" r="25"/>
         <!-- first row of circles -->
-        <circle id="B" cx="50" cy="150" r="25"/>
-        <circle id="C" cx="150" cy="150" r="25"/>
-        <circle id="D" cx="250" cy="150" r="25"/>
+        <circle id="circB" cx="50" cy="150" r="25"/>
+        <circle id="circC" cx="150" cy="150" r="25"/>
+        <circle id="circD" cx="250" cy="150" r="25"/>
         <!-- second row of circles -->
-        <circle id="E" cx="50" cy="250" r="25"/>
-        <circle id="F" cx="150" cy="250" r="25"/>
-        <circle id="G" cx="250" cy="250" r="25"/>
+        <circle id="circE" cx="50" cy="250" r="25"/>
+        <circle id="circF" cx="150" cy="250" r="25"/>
+        <circle id="circG" cx="250" cy="250" r="25"/>
         <!-- bottom circle -->
-        <circle id="H" cx="150" cy="350" r="25"/>
+        <circle id="circH" cx="150" cy="350" r="25"/>
       </g>
   
       <!-- LINES -->
@@ -70,5 +70,11 @@
       </g>
   
     </svg>
+    
+    <script src="./js/jquery-2.2.2.js"></script>
+    <script>
+        $('circle#circA').attr("fill", "red");
+        $('circle#circA').attr("fill", "");
+    </script>
   </body>
 </html>
