@@ -28,7 +28,9 @@ GRAPH = [
 COLOURS = {
     used : 'white',
     valid : 'lightgreen',
-    current : 'green'
+    current : 'green',
+    invalid : 'red',
+    static : 'white'
 };
 
 var started = false,

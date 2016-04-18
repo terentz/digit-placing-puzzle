@@ -6,25 +6,18 @@
 
 /* TOP LEVEL FUNCTIONS */
 
-function move ( ) {
+function move( ) {
+    // Get id of firing element..
     target = $(event.currentTarget);
     node = target.attr('id');
+    if ( node.match(/^txt_[A-H]$/) ) node = node.substr(4);
     
     // If take back..
-    if ( node === currNode ) {
-        console.log('take back');
-        moveBack(node);
-    } else {
-        // Otherwise, move forward..
-        if ( validNodes.indexOf(node) > -1 ) {
-            moveForth( node );
-        } // Unless it's an adjacent node..
-        else if ( adjacent( node, currNode ) ) {
-            return;
-        }
-    }
+    if ( node === currNode ) moveBack(node);
+    // Otherwise, move forward..
+    else if ( validNodes.indexOf(node) > -1 ) moveForth( node );
 }
-function moveForth ( id ) {
+function moveForth( id ) {
     // Set prevNode..
     if ( !started ) {
         started = true;
@@ -41,7 +34,7 @@ function moveForth ( id ) {
     // Set the nodes that are now valid..
     setValid(id);
 }
-function moveBack ( id ) {
+function moveBack( id ) {
     --current;
     // Blank out current square..
     $('#txt_'+id).text('');
@@ -64,14 +57,23 @@ function moveBack ( id ) {
     // Set valid nodes..
     setValid( started ? currNode : '0' );
 }
-function clickAdjacent() {
-    target = $(event.currentTarget);
-    node = target.attr('id');
-    
-    
+
+function invalidNode( ) {
+    clicked = $(event.currentTarget).attr('id');
+    if ( adjacent( clicked, currNode ) ) {
+        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.invalid);
+        else $('#'+currNode+clicked).attr('stroke',COLOURS.invalid);
+    }
+}
+function leaveInvalidNode( ) {
+    clicked = $(event.currentTarget).attr('id');
+    if ( adjacent( clicked, currNode ) ) {
+        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.static);
+        else $('#'+currNode+clicked).attr('stroke',COLOURS.static);
+    }
 }
 
-function restart () {
+function restart( ) {
     $('.nodeText').text('');
     prevNode = null;
     currNode = null;
@@ -90,7 +92,7 @@ function restart () {
 
 /* GAME UTILITIES */
 
-function setValid ( id ) {
+function setValid( id ) {
 //    console.log('in setValid()');
     if ( !started ) {
         // Set valid nodes (pre-game)
@@ -115,6 +117,6 @@ function setValid ( id ) {
         }
     }
 }
-function adjacent ( id1, id2 ) {
+function adjacent( id1, id2 ) {
     return GRAPH[ NODES.indexOf(id1) ][ NODES.indexOf(id2) ];
 }

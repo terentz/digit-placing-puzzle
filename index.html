@@ -79,6 +79,11 @@
     <script src='./js/game.js'></script>
     <script>
         $('circle').bind('click', move);
+        $('text').bind('click', move);
+        $('circle').bind('mousedown', invalidNode);
+        $('circle').bind('mouseup', leaveInvalidNode);
+        $('circle').bind('mouseout', leaveInvalidNode);
+        
 //        $('circle:not(.valid)').live('click', clickAdjacent);
         /* init's */
         setValid('0');
