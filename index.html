@@ -70,23 +70,14 @@
         <text id="txt_H" class="nodeText" x="150" y="350" dy=".3em"></text>
       </g>
   
-    </svg>
-    
-    <script src="./js/jquery-2.2.2.js"></script>
+      </svg>
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+      <script src="./js/jquery-2.2.2.js"></script>
 <!--    <script src="./js/graph.js"></script>-->
 <!--    <script src="./js/cytoscape/cytoscape.js"></script>-->
     <script src='./js/globals.js'></script>
     <script src='./js/game.js'></script>
-    <script>
-        $('circle').bind('click', move);
-        $('text').bind('click', move);
-        $('circle').bind('mousedown', invalidNode);
-        $('circle').bind('mouseup', leaveInvalidNode);
-        $('circle').bind('mouseout', leaveInvalidNode);
-        
-//        $('circle:not(.valid)').live('click', clickAdjacent);
-        /* init's */
-        setValid('0');
-    </script>
+    <script src="./js/init.js"></script>
   </body>
 </html>

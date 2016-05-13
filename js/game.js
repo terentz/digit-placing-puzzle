@@ -1,7 +1,6 @@
 /*
- * 
+ * Main game file.
  */
-
 
 
 /* TOP LEVEL FUNCTIONS */
@@ -57,22 +56,6 @@ function moveBack( id ) {
     // Set valid nodes..
     setValid( started ? currNode : '0' );
 }
-
-function invalidNode( ) {
-    clicked = $(event.currentTarget).attr('id');
-    if ( adjacent( clicked, currNode ) ) {
-        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.invalid);
-        else $('#'+currNode+clicked).attr('stroke',COLOURS.invalid);
-    }
-}
-function leaveInvalidNode( ) {
-    clicked = $(event.currentTarget).attr('id');
-    if ( adjacent( clicked, currNode ) ) {
-        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.static);
-        else $('#'+currNode+clicked).attr('stroke',COLOURS.static);
-    }
-}
-
 function restart( ) {
     $('.nodeText').text('');
     prevNode = null;
@@ -85,8 +68,21 @@ function restart( ) {
     setValid();
 }
 
+function grabInvalidNode( ) {
+    clicked = $(event.currentTarget).attr('id');
+    if ( adjacent( clicked, currNode ) ) {
+        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.invalid);
+        else $('#'+currNode+clicked).attr('stroke',COLOURS.invalid);
+    }
+}
+function dropInvalidNode( ) {
+    clicked = $(event.currentTarget).attr('id');
+    if ( adjacent( clicked, currNode ) ) {
+        if ( clicked < currNode ) $('#'+clicked+currNode).attr('stroke',COLOURS.static);
+        else $('#'+currNode+clicked).attr('stroke',COLOURS.static);
+    }
+}
 
-/*  */
 
 
 
@@ -120,3 +116,16 @@ function setValid( id ) {
 function adjacent( id1, id2 ) {
     return GRAPH[ NODES.indexOf(id1) ][ NODES.indexOf(id2) ];
 }
+
+
+/* EVENT HANDLERS */
+
+$('circle').bind('click', move);
+$('text').bind('click', move);
+$('circle').bind('mousedown', grabInvalidNode);
+$('circle').bind('mouseup', dropInvalidNode);
+$('circle').bind('mouseout', dropInvalidNode);
+
+
+/* INIT'S */
+setValid('0');
